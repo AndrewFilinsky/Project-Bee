@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <PathDelim Value="\"/>
+    <Version Value="5"/>
+    <General>
+      <MainUnit Value="0"/>
+      <IconPath Value="./"/>
+      <TargetFileExt Value=".exe"/>
+      <ActiveEditorIndexAtStart Value="2"/>
+    </General>
+    <LazDoc Paths=""/>
+    <Units Count="7">
+      <Unit0>
+        <CursorPos X="62" Y="78"/>
+        <EditorIndex Value="0"/>
+        <Filename Value="Bee.dpr"/>
+        <IsPartOfProject Value="True"/>
+        <Loaded Value="True"/>
+        <TopLine Value="1"/>
+        <UnitName Value="Bee"/>
+        <UsageCount Value="25"/>
+      </Unit0>
+      <Unit1>
+        <CursorPos X="17" Y="130"/>
+        <Filename Value="Bee_Common.pas"/>
+        <TopLine Value="108"/>
+        <UnitName Value="Bee_Common"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <CursorPos X="83" Y="113"/>
+        <EditorIndex Value="2"/>
+        <Filename Value="Bee_App.pas"/>
+        <Loaded Value="True"/>
+        <TopLine Value="86"/>
+        <UnitName Value="Bee_App"/>
+        <UsageCount Value="12"/>
+      </Unit2>
+      <Unit3>
+        <CursorPos X="2" Y="11"/>
+        <EditorIndex Value="1"/>
+        <Filename Value="Compiler.inc"/>
+        <Loaded Value="True"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="11"/>
+      </Unit3>
+      <Unit4>
+        <CursorPos X="36" Y="561"/>
+        <Filename Value="Bee_Headers.pas"/>
+        <TopLine Value="1"/>
+        <UnitName Value="Bee_Headers"/>
+        <UsageCount Value="11"/>
+      </Unit4>
+      <Unit5>
+        <CursorPos X="1" Y="290"/>
+        <Filename Value="Bee_Modeller.pas"/>
+        <TopLine Value="271"/>
+        <UnitName Value="Bee_Modeller"/>
+        <UsageCount Value="11"/>
+      </Unit5>
+      <Unit6>
+        <CursorPos X="1" Y="224"/>
+        <Filename Value="Bee_MainPacker.pas"/>
+        <TopLine Value="205"/>
+        <UnitName Value="Bee_MainPacker"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+    </Units>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="5"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <UnitOutputDirectory Value="..\temp"/>
+      <LCLWidgetType Value="win32"/>
+    </SearchPaths>
+    <Parsing>
+      <Style Value="1"/>
+      <SyntaxOptions>
+        <CStyleOperator Value="False"/>
+        <AllowLabel Value="False"/>
+        <CPPInline Value="False"/>
+        <DelphiCompat Value="True"/>
+        <UseAnsiStrings Value="True"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <Generate Value="Faster"/>
+      <TargetProcessor Value="1"/>
+      <TargetCPU Value="i386"/>
+      <Optimizations>
+        <VariablesInRegisters Value="True"/>
+        <UncertainOptimizations Value="True"/>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
+      <TargetOS Value="Win32"/>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <UseLineInfoUnit Value="False"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+    </Linking>
+    <Other>
+      <CustomOptions Value="
+"/>
+      <CompilerPath Value="$(CompPath)"/>
+      <ExecuteAfter>
+        <CompileReasons Compile="False" Build="False" Run="False"/>
+      </ExecuteAfter>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="2">
+      <Item1>
+        <Name Value="ECodetoolError"/>
+      </Item1>
+      <Item2>
+        <Name Value="EFOpenError"/>
+      </Item2>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

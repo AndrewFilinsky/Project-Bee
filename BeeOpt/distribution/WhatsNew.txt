@@ -1,0 +1,57 @@
+2007.02.20
+
+  [*] RxLib dependency excluded.
+
+2007.10.22
+
+  [*] Files BeeOpt\About.txt, BeeOpt\Manual.txt updated.
+
+  [*] Units\UOptimizer.pas customized.
+
+2007.10.25
+
+  [*] Units\UOptimizer.pas customized.
+
+2007.11.05
+
+  [+] The "-deep" option to perform deep parameters optimization added.
+  [*] Batch files customized.
+  [*] Minor interface bugfix.
+  [*] Minor interface optimizatiom.
+
+2007.11.07
+
+  [*] Minor interface optimizatiom.
+  [*] UOptimizer.pas, minor optimization.
+
+2007.11.08
+
+  [-] Fix *.dat loading error.
+  [-] Fix optimization error.
+  [*] Method "1" uses level "2" instead level "3".
+  [*] Process priority adjusted.
+
+2007.11.10
+
+  [*] Method "1" uses compression level "2", 
+      method "2" uses compression level "3", 
+      method "3" uses best known compression level.
+
+  [*] UOptimizer.pas, minor optimization.
+
+2007.11.12
+
+  [*] TrayIcon behaviour optimized.
+  [*] OnClose () behaviour optimized.
+
+2007.11.22
+
+  [*] Updated Bee core used.
+
+2007.11.26
+
+  [*] Updated Bee core used.
+
+2007.12.01
+
+  [*] Updated Bee core used.

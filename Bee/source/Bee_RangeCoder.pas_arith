@@ -1,0 +1,234 @@
+unit Bee_RangeCoder;
+
+{ Unit contains classes:
+  -- TRangeCoder, range coder (based on BeeAri (based on arithmetic coder), MaxFreq = 2^29);
+  Created:
+  -- Andrew Filinsky, 2002;
+}
+
+{$I Compiler.inc}
+{$R-,Q-,S-,W-,O+}
+
+interface
+
+uses
+  Classes,          // TStream, ...
+  Bee_Assembler;    // Low-level routines ...
+
+const
+  ValueBits = 26;
+  // ValueBits = 31;
+  FirstQtr  = 1 shl (ValueBits - 2);
+  Half      = 2 * FirstQtr;
+  ThirdQtr  = 3 * FirstQtr;
+  TopValue  = Half - 1 + Half;
+  MaxFreq   = FirstQtr - 1;
+
+type
+  TRangeCoder = class
+    constructor Create (aStream: TStream);
+
+    procedure   StartEncode;
+    procedure   FinishEncode;
+    procedure   Encode(CumFreq, Freq, TotFreq: cardinal);
+    procedure   EncodeBit(Freq0, Freq1, Bit: cardinal); inline;
+
+    procedure   StartDecode;
+    procedure   FinishDecode;
+    function    GetFreq(TotFreq: cardinal): cardinal;
+    procedure   Decode(CumFreq, Freq, TotFreq: cardinal);
+    function    DecodeBit(Freq0, Freq1: cardinal): cardinal; inline;
+
+  private
+    /// for encoding...
+    procedure   EmitBitsForEncode; inline;
+    procedure   OutBit (Bit: cardinal);
+    procedure   BitPlusFollow (Bit: cardinal);
+    /// for decoding...
+    procedure   EmitBitsForDecode; inline;
+    function    InputBit: cardinal;
+
+  private
+    Stream: TStream;
+
+    Buffer, Bits,                       // for bytes output/input...
+    BitsToFollow,                       // for encoding...
+    Value,                              // for decoding...
+    Low, High: cardinal;                // for both encoding and decoding...
+  end;
+
+implementation
+
+{ TRangeCoder }
+
+constructor  TRangeCoder.Create (aStream: TStream);
+begin
+  Stream := aStream;
+end;
+
+procedure  TRangeCoder.StartEncode;
+begin
+  Low := 0; High := TopValue; BitsToFollow := 0; Buffer := 0; Bits := 1;
+end;
+
+procedure  TRangeCoder.FinishEncode;
+begin
+  if Bits = 0 then Exit;
+  Inc (BitsToFollow);
+  if Low < FirstQtr then BitPlusFollow (0) else BitPlusFollow (cardinal (-1));
+  if Bits > $00800000 then Stream.Write (Buffer, 4) else
+  if Bits > $00008000 then Stream.Write (Buffer, 3) else
+  if Bits > $00000080 then Stream.Write (Buffer, 2) else
+  if Bits > $00000001 then Stream.Write (Buffer, 1);
+  Bits := 0;
+end;
+
+procedure TRangeCoder.EmitBitsForEncode;
+begin
+  repeat
+    if High < Half then
+      BitPlusFollow (0)
+    else if Low >= Half then begin
+      BitPlusFollow (cardinal (-1));
+      Dec (Low, Half);
+      Dec (High, Half);
+    end else if (Low >= FirstQtr) and (High < ThirdQtr) then begin
+      Inc (BitsToFollow);
+      Dec (Low, FirstQtr);
+      Dec (High, FirstQtr);
+    end else
+      break;
+    Low  := Low shl 1;
+    High := High shl 1 + 1;
+  until false;
+end;
+
+procedure  TRangeCoder.Encode (CumFreq, Freq, TotFreq: cardinal);
+var
+  Range: cardinal;
+begin
+  // Recount bounds...
+  Range := High - Low + 1;
+  High  := Low + MulDiv (Range, CumFreq + Freq, TotFreq) - 1;
+  Low   := Low + MulDiv (Range, CumFreq, TotFreq);
+  // Emit bits...
+  EmitBitsForEncode;
+end;
+
+procedure TRangeCoder.EncodeBit(Freq0, Freq1, Bit: cardinal);
+var
+  Range: cardinal;
+begin
+  if Bit = 0 then
+  begin
+    Range := High - Low + 1;
+    High  := Low + MulDiv (Range, Freq0, Freq0 + Freq1) - 1;
+  end else
+  begin
+    Range := High - Low + 1;
+    Low   := Low + MulDiv (Range, Freq0, Freq0 + Freq1);
+  end;
+  // Emit bits...
+  EmitBitsForEncode;
+end;
+
+procedure  TRangeCoder.OutBit (Bit: cardinal);
+begin
+  Inc (Buffer, Bits and Bit);
+  Bits := Bits shl 1;
+  if Bits = 0 then
+  begin
+    Stream.Write (Buffer, SizeOf (Buffer));
+    Buffer := 0;
+    Inc (Bits);
+  end;
+end;
+
+procedure  TRangeCoder.BitPlusFollow (Bit: cardinal);
+begin
+  OutBit (Bit);
+  while BitsToFollow > 0 do begin OutBit (not Bit); Dec (BitsToFollow); end;
+end;
+
+procedure  TRangeCoder.StartDecode;
+var
+  I: cardinal;
+begin
+  Bits := 0; Value := 0; Low := 0; High := TopValue;
+  for I := 1 to ValueBits do Value := Value shl 1 + InputBit;
+end;
+
+procedure  TRangeCoder.FinishDecode;
+begin
+  /// Nothing to do...
+end;
+
+function  TRangeCoder.GetFreq (TotFreq: cardinal): cardinal;
+var
+  Range: cardinal;
+begin
+  Range  := High - Low + 1;
+  Result := MulDecDiv (Value - Low + 1, TotFreq, Range);
+end;
+
+procedure TRangeCoder.EmitBitsForDecode;
+begin
+  repeat
+    if High < Half then
+      // nothing
+    else if Low >= Half then begin
+      Dec (Value, Half);
+      Dec (Low, Half);
+      Dec (High, Half);
+    end else if (Low >= FirstQtr) and (High < ThirdQtr) then begin
+      Dec (Value, FirstQtr);
+      Dec (Low, FirstQtr);
+      Dec (High, FirstQtr);
+    end else
+      break;
+    Low   := Low shl 1;
+    High  := High shl 1 + 1;
+    Value := Value shl 1 + InputBit;
+  until false;
+end;
+
+procedure TRangeCoder.Decode(CumFreq, Freq, TotFreq: cardinal);
+var
+  Range: cardinal;
+begin
+  // Recount bounds...
+  Range := High - Low + 1;
+  High  := Low + MulDiv (Range, CumFreq + Freq, TotFreq) - 1;
+  Low   := Low + MulDiv (Range, CumFreq, TotFreq);
+  // Emit bits...
+  EmitBitsForDecode;
+end;
+
+function TRangeCoder.DecodeBit(Freq0, Freq1: cardinal): cardinal;
+var
+  Range: cardinal;
+begin
+  if GetFreq(Freq0 + Freq1) < Freq0 then
+  begin
+    Range := High - Low + 1;
+    High  := Low + MulDiv (Range, Freq0, Freq0 + Freq1) - 1;
+    Result := 0;
+  end else
+  begin
+    Range := High - Low + 1;
+    Low   := Low + MulDiv (Range, Freq0, Freq0 + Freq1);
+    Result := 1;
+  end;
+  // Emit bits...
+  EmitBitsForDecode;
+end;
+
+function TRangeCoder.InputBit: cardinal;
+begin
+  if Bits = 0 then begin Stream.Read (Buffer, 1); Bits := 8; end;
+  Result := Buffer and 1;
+  Buffer := Buffer shr 1;
+  Dec (Bits);
+end;
+
+end.

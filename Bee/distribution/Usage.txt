@@ -1,0 +1,38 @@
+The Bee 0.7.9 build 0301 archiver utility, freeware version, Jan 2007.
+(c) 1999-2007 Andrew Filinsky and Melchiorre Caruso.
+
+
+  Usage: Bee <Command> -<Option 1> -<Option N> <ArchiveName> <FileNames...> 
+
+  Commands:
+
+    a   Add files to archive
+    d   Delete files from archive
+    e   Extract files from archive
+    x   eXtract files from archive with path name
+    l   List archive
+    t   Test archive files
+    r   Rename files in archive
+
+  Options:
+
+    r       Recurse subdirectories 
+    u       Update files
+    f       Freshen files
+    e       force file Extention
+    s       create Solid archive
+    a       add self-extrActor module
+    o<M>    set overwrite Mode (Q-Query (default), A-All, S-Skip all)
+    m<0..3> set compression Method (0-store...1-default...3-maximal)
+    d<0..9> set Dictionary size (d1 uses < 5M, d2 (default) < 10M, d3 < 20M...)
+
+    x       eXclude filenames
+    t       Test files after adding
+    y       set temporany directory
+    k       use blowfish crypter/decrypter (min key-length 4 bytes)
+    c<DIR>  insert (with 'a' cmd) or delete (with 'x' cmd) part of file path
+
+    cfg<Name>  use specified configuration file
+    pri<P>     set process Priority (0-Idle, 1-Normal, 2-High, 3-RealTime)
+
+  Use BeeOpt to make most optimal parameters.

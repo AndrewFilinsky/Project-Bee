@@ -1,0 +1,101 @@
+This is BeeOpt 1.7.2 utility (C) 1999-2007 Andrew Filinsky
+for Bee 0.7.x archiver (C) 1999-2007 Andrew Filinsky.
+
+Destination:
+
+    The BeeOpt utility calculates parameters for Bee 0.7.x archiver,
+    then better compression ratio will be available by using them. 
+
+Usage of BeeOpt:
+
+    BeeOpt <Ext> [<Options>]
+
+Parameters is:
+
+    <Ext>
+
+      is the name of folder, which contains a set of
+      typical files with <Ext> extension. This files will
+      be used for parameters optimization.
+
+Options is:
+
+    -c
+
+        Collect optimized parameters files from current folder
+        and its subfolders, then place they into configuration file 
+        into current folder, without duplicates.
+
+    -reduce
+
+        Reduce configuration file after collecting parameters 
+        to decrease configuration file size. 
+        Uses with "-c" option.
+
+    -cfg<CfgName>
+
+        Use specified configuration file.
+        By default is using the "Bee.ini" configuration file.
+
+    -recalculate
+
+        Recalculate parameters for given <Ext> extension 
+        to start new optimization session at next running of BeeOpt.
+
+    -merge
+  
+        Collect all <Ext>.dat files in subfolders to one <Ext>.dat, 
+        and prepare it to recalculate.
+
+    -hide
+
+        Run BeeOpt invisible.
+        In this case BeeOpt can be stopped by TaskManager only.
+
+    -deep 
+    
+        Perform deep parameters optimization,
+        including parameters optimization for solid compression.
+
+    -m
+    -d
+    -pri
+
+Instructions:
+
+    For optimization of parameters the <Ext> subfolder must be created, 
+    in which the set of typical files must be placed. Total size of files 
+    must be at least 1 mbyte.
+
+    Then you can start BeeOpt, using <Ext> as parameter.
+    The result of optimization will be placed in "<Ext>.dat" file.
+
+    At last, you can construct configuration file for Bee 0.7.x, 
+    by starting BeeOpt with an option "-c". Send constructed 
+    configuration files to e-mail:
+
+        filinsky@mail.ru,
+
+    then Yours configuration files will be used for reception
+    of the better compression ratio by the Bee 0.7.x.
+
+Examples:
+
+    Create parameters for "*.doc" files. The "Doc" subfolder
+    with set of "*.doc" files inside must be previously created:
+
+        BeeOpt doc
+
+    Create parameters for "*.*" files. The "Default" folder with
+    set of different files inside must be previously created:
+
+        BeeOpt default
+
+    Construct configuration file "Bee.ini" for Bee 0.7.x:
+
+        BeeOpt -c
+
+Copyrights:
+
+  The BeeOpt 1.7.2 utility (C) 1999-2007 Andrew Filinsky.
+  The Bee 0.7.x archiver (C) 1999-2007 Andrew Filinsky.

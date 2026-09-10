@@ -1,0 +1,448 @@
+2007.10.22
+
+  Update sources by Andrew Filinsky:
+
+  Bee:
+
+  [*] Bee_Crc.pas customized.
+  [*] Bee_Files.pas customized.
+  [*] Bee_RangeCoder.pas customized.
+
+  BeeOpt:
+
+  [*] Files BeeOpt\About.txt, BeeOpt\Manual.txt updated.
+
+2007.11.02
+
+  Update sources by Andrew Filinsky:
+
+  Bee:
+
+  [*] Minor source rearrangement.
+
+2007.11.05
+
+  Update sources by Andrew Filinsky:
+
+  Bee:
+
+  [*] Modeller.pas customized.
+
+  BeeOpt:
+
+  [+] The "-deep" option added to perform deep parameters optimization.
+  [*] Minor interface bugfix.
+  [*] Batch files customized.
+
+  Version 1.0.5 D released.
+
+2007.11.05
+
+  Update sources by Andrew Filinsky:
+
+  BeeOpt:
+
+  [*] Minor interface optimizatiom.
+
+2007.11.07
+
+  Update sources by Andrew Filinsky:
+
+  Bee:
+
+  [*] Bee_Configuration.pas, TTableParameters starts from 0.
+  [*] Bee_Modeller.pas, customized.
+
+  BeeOpt:
+
+  [*] Minor interface optimizatiom.
+  [*] UOptimizer.pas, minor optimization.
+
+  [!] Error: "BeOpt <ext> -recalculate" kills <ext>.dat.
+
+2007.11.08
+
+  Update sources by Andrew Filinsky:
+
+  BeeOpt:
+
+  [-] Fix *.dat loading error.
+  [-] Fix optimization error.
+  [*] Method "1" uses level "2" instead level "3".
+  [*] Process priority adjusted.
+
+2007.11.10
+
+  Update sources by Andrew Filinsky:
+
+  BeeOpt:
+
+  [*] Method "1" uses compression level "2", 
+      method "2" uses compression level "3", 
+      method "3" uses best known compression level.
+
+  [*] UOptimizer.pas, minor optimization.
+
+  Version 1.0.8 D released.
+
+2007.11.12
+
+  BeeOpt:
+
+  [*] TrayIcon behaviour optimized.
+  [*] OnClose () behaviour optimized.
+
+  Version 1.0.9 D released.
+
+2007.11.14
+
+  Bee core:
+
+  [-] Bee_Codec, type TFreq excluded.
+  [*] Bee_Codec, UpdateSymbol () optimized.
+
+2007.11.22
+
+  Bee core:
+
+  [*] Bee_Codec, UpdateSymbol () optimized.
+
+  Version 1.0.10 D released.
+
+  [*] Bee_App, interface customized.
+
+2007.11.24
+
+  [*] Bee_App, code reduced.
+
+2007.11.25
+
+  [*] Bee_App, code reduced.
+
+2007.11.26
+
+  [*] Bee_Codec, UpdateSymbol () optimized.
+  [*] Bee_App, code reduced.
+  [*] Bee_App, "-cfg" option excluded.
+
+2007.11.29
+
+  [*] Bee_App, TBeeApp.DisplayUsage () bugs fixed.
+  [*] Bee_App, TBeeApp.ListShell () reduced and customized.
+
+2007.12.01
+
+  [*] Bee_Modeller, TBaseCoder.CreateChild () updated.
+
+2007.12.02
+
+  Version 1.0.14 D released.
+
+  Bee:
+  
+  [+] Rangecoder uses B version.
+
+2007.12.03
+
+  [/] The Bee version with RangecoderB shows the best result overall.
+
+      It compresses 0.1% better than 1.0.04.T - 1.0.12.D versions;
+      It builds parameters better;
+      It has the same speed as 1.0.04.T - 1.0.12.D versions;
+      It is possible to use 1.0.04.T - 1.0.12.D version parameters with compression bonus.
+
+  Version 1.0.16 D released.
+
+2009.10.23
+
+  [/] Assemble best known sources from 1.0.04 T - 1.0.16 D versions.
+      
+      It fixes some errors with Turbo Delphi compatibility.
+      This version must be compiled and tested now.
+      ( It is need to synchronize units with last Project Patricia units. )
+
+  Backward compatibility is lost.
+  Version 1.0.17 S released.
+
+2009.10.24
+
+  [+] Bee_Modeller.pas, depleted contexts rejection added.
+
+      Compression ratio of large files (and large solid blocks) improved 
+      at the cost of minor speed loss.
+
+  Backward compatibility is lost.
+  Version 1.0.18 D released.
+
+2009.10.25
+
+  Version 1.0.17 S used.
+
+  [*] BeeModeller.pas, forward node creating excluded.
+
+  Backward compatibility is lost.
+  Version 1.0.20 S released.
+
+2009.10.27
+
+  Bee, BeeOpt:
+
+  [*] BeeModeller.pas, local code optimization.
+
+  Backward compatibility is lost.
+  Version 1.0.21 S released.
+
+2009.10.27
+
+  Bee, BeeOpt:
+
+  [*] BeeModeller.pas, fix error on creating nodes.
+
+  Version 1.0.22 D released.
+
+2009-10-29
+
+  [*] Fix some deprecated functions.
+
+  Version 1.0.23 S released.
+
+2009-10-31
+
+  Bee, BeeOpt:
+
+  [+] BeeModeller.pas, length of input frame is doubled.
+
+  Version 1.0.24 D released.
+
+2022.07.11
+
+  Bee:
+
+  [*] Отключил работу с локализацией, потому что не компилировалось.
+  [*] Внес мелкие неразрушающие правки, потому что не компилировалось.
+  [*] Исправил отображение метода сжатия в команде "l", давно хотел.
+
+  Version 1.0.25 T.
+
+2022.07.12
+
+  [+] Используется вероятность ухода пропорционально порядку контекста.
+
+      Размер Condoyle после оптимизации -> 478741.
+      Размер enwik8 после оптимизации Condoyle -> 20.571.372, или 20.380.396 после выставления количества контекстов 15.
+
+  Version 1.0.26 T.
+
+  [*] Оптимизировал код Bee_Assembler.
+
+  Version 1.0.27 T.
+
+  [/] Важно!
+      Обновлять счётчики символов не во всех контекстах, а только в моделях старших порядков, 
+      до первой модели с контекстом, который встретился более одного раза, включительно.
+      Это увеличивает степень сжатия на величину около 1%.
+
+  [/] Важно!
+      При этом достраивать нужно все модели, а не только те, которые были использованы для расчёта вероятностей.
+      Это увеличивает степень сжатия на величину около 0,1%.
+      
+2022.07.13
+
+  Bee:
+
+  [+] Достраиваются все модели, а не только те, которые были использованы для расчёта вероятностей.
+
+      Размер Condoyle после оптимизации -> 478365.
+      Размер enwik8 после оптимизации Condoyle -> 20.606.156, или 20.446.959 после выставления количества контекстов 15.
+
+  Version 1.0.28 T.
+
+2022.07.14
+
+  [*] Переписал Bee_Assembler. По возможности, везде используется System.Move(), он быстрее всего ручного кода.
+
+  Bee:
+
+  [-] Исправил чтение и запись имени файла в заголовок архива.
+  [-] Исправил листинг файлов в архиве по команде 'l'.
+
+  Version 1.0.29 T.
+
+2022.07.14
+
+  Bee:
+
+  [*] Оптимизировал Bee_Modeller.pas.
+
+  Version 1.0.30 T.
+
+2022.07.17
+
+  BeeOpt:
+
+  [*] Мутация байта теперь аналоговая, а не побитная. 
+      По результатам тестов, она обеспечивает более тонкую оптимизацию параметров, с качеством, недоступным для побитовой мутации.
+
+  Bee:
+
+  [+] Расчёт ухода с детерминированного контекста выполняется по той же схеме, что и для недетерминированного.
+  [*] Оптимизировал скорость расчёта вероятностей для детерминированного контекста.
+
+  Version 1.0.31 X.
+
+2022.07.18
+
+  Bee, BeeOpt:
+
+  [*] Аналоговая мутация байта теперь равномерная, Rnd вместо Sqr(Rnd). По тестам, кажется, это увеличит скорость оптимизации.
+      [!] Выглядит так, что Sqr(Rnd) лучше, чем Rnd.
+
+      Размер Condoyle после оптимизации -> 477902.
+      Размер enwik8 после оптимизации Condoyle -> 20.586.829, или 20.361.790 после выставления количества контекстов 15.
+
+  Version 1.0.32 T.
+
+2022.07.19
+
+  Bee, BeeOpt:
+
+  [+] Вероятность ухода с детерминированного контекста пропорциональна порядку контекста.
+
+      Размер Condoyle.inf.f после оптимизации -> 476840.
+      Размер enwik8.inf.f после оптимизации Condoyle -> 20.376.382.
+
+  Version 1.0.33 T.
+
+2022.07.22
+
+  Bee, BeeOpt:
+
+  [*] Bee_Files: Исправил TNulWriter.Seek() и TNulWriter.SetSize().
+  [+] Расчёт ухода с нового детерминированного контекста выполняется по той же схеме, что и для недетерминированного.
+  [+] Основной инкремент детерминированный в коде, меняется инкремент для специального случая, Table.Part[MaxSymbol + 4].
+  [+] Табличное значение Table.Part[MaxSymbol + 4] увеличивается на 1, чтобы избежать нулевого инкремента, потому что он скорее всего безсмысленный.
+  [+] Исправил вход в цикл TBaseCoder.Account().
+
+  Version 1.0.34 T.
+
+2022.07.27
+
+  Bee, BeeOpt:
+
+  [*] Переделал захват и удаление узлов. Не используется TNode.Tear, медленнее на 3%.
+
+  [+] Вероятность ухода с нового детерминированного контекста пропорциональна порядку контекста.
+  [+] Коэффициент масштабирования веса последнего символа (Table.Part[MaxSymbol + 2]) приводится к диапазону [0..255] -> [1..2].
+  [+] Масштабирование веса последнего символа выполняется с приоритетом операций, исключающим переполнение Int.
+
+  [/] Предположительно, это лучший вариант из всех предыдущих. Фиксирую версию.
+
+  Version 1.0.35 D.
+
+2025.10.28
+
+  Bee:
+
+  [*] Минимальные оптимизации в BeeModeller.
+  [*] Версия Bee_Codec.pas, Bee_RangeCoder.pas_arith, Bee_RangeCoder.pas_rangecoder из более поздних разработок.
+  [*] Правки опций компиляции.
+  [*] Оптимизация производительности выборки байта по адресу.
+  [*] Оптимизация Bee_RangeCoder.pas_arith: развёрнуты функции EmitBitsForEncoding(), EmitBitsForDecoding() в местах их использования.
+
+  [!] Работа версии x64 не совпадает с версией x32!
+
+  BeeOpt:
+  
+  [+] Вариант BeeOpt из поздних версий, исправлена ошибка неравномерного изменения коэффициентов в плюс и минус, должен обеспечивать лучший вариант оптимизации.
+  [*] Удалил лишний код.
+
+  Version 1.0.35 D3.
+
+2025.10.30
+
+  Bee:
+
+  [*] Минимальные оптимизации в BeeModeller.
+  [/] Полностью совместим с 1.0.35.d3.
+
+  BeeOpt:
+  
+  [*] Мелкие правки для устранения Warning of compilation.
+
+  Version 1.0.35 D4.
+
+2025.11.09
+
+  Bee:
+
+  [+] Параметр [MaxSymbol + 4] не масштабируется в таблице.
+  [+] Предвычисленные уходы Esc = CountOfNodes * Increment * (Номер порядка модели) * (подбираемый коэффициент из диапазона 0,125..4,125).
+  [*] Оптимизации производительности кода + заготовки для будущих доработок.
+  [/] Не совместим с 1.0.35.d[x].
+
+  BeeOpt:
+  
+  [*] Мелкие правки для устранения Warning of compilation.
+  [*] Правки интерфейса / вывода информации в консоль.
+
+  Version 1.0.35 E.
+
+2026-04-09
+
+  Bee:
+
+  [+] Используется скользящий буфер со сдвигом вместо циклического.
+  [+] Не используется дополнительный массив для сокращения узлов дерева при его переполнении. Для сокращения узлов используется рекурсивная функция с ограничением глубины.
+  [+] Используется RangeCoder вместо арифметического кодера.
+
+  Version 1.0.35G testb.
+
+2026-04-09
+
+  Bee:
+
+  [+] Изменено вычисление весов для детерминированного символа, который встречался один раз. Предположительно, это чуть быстрее и чуть качественнее оптимизация, так как параметр [0] больше не зависит от параметра [MaxSymbol + 4].
+
+  Version 1.0.35G testc.
+
+2026-04-14
+
+  Bee:
+
+  [+] Ветка "Determined context, encountered at first time ..." исключена, всегда используется ветка "Determined context ...".
+  [+] Подбирается лучшее значение Increment.
+
+  [/] Обнаружено, что в некоторых вариантах оптимизации параметров происходит заклинивание при Increment == 1, и после этого Increment больше не меняется. При этом обнаружено, что наилучшие варианты используют Increment >> 8. Решено подбирать Increment не менее 8.
+
+  Version 1.0.35G testc test4.
+
+2026-04-21
+
+  Bee:
+
+  [!] Обнаружил выход порога RecencyScaling за пределы допустимого диапазона при Increment = 128.
+  [*] Исправил вычисление порога RecencyScaling.
+  [*] Оптимизировал код для расчёта "Determined context ...".
+
+  Version 1.0.35G testc test2 60000 b.
+
+2026-04-22
+
+  Bee:
+
+  [*] Упростил и оптимизировал код захвата узла из кучи Heap.
+  [*] Оптимизировал код для расчёта вероятностей детерминированного и недетерминированного контекста.
+
+  Version 1.0.35G testc test2 60000.
+
+  [/] Выглядит так, что данный вариант при Increment = 128 даёт степень сжатия на сотые доли процента хуже, чем при более низких значениях. Желаю проверить это предположение.
+  [/] Запускаю сбор статистики при вариантах Increment = 8, 16, 32, 64.
+
+  Bee:
+
+  [/] На первой фазе сбора статистики выглядит так, что немасштабированные коэффициенты уходов являются недостаточно точными, и происходит потеря степени сжатия.
+
+  [*] Добавлен константный коэффициент масштабирования Scale для коэффициентов уходов.
+  [/] Запускаю сбор статистики при вариантах Increment = 8, 16, 32, 64, 128.
+
+  Version 1.0.35G testc test2 70000.

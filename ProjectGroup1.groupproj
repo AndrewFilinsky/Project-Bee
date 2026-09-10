@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{865ACDBE-771A-449B-B590-617CCDD6318D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Bee\source\Bee.dproj">
+            <Dependencies>BeeOpt\source\BeeOpt.dproj</Dependencies>
+        </Projects>
+        <Projects Include="BeeOpt\source\BeeOpt.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Bee" DependsOnTargets="BeeOpt">
+        <MSBuild Projects="Bee\source\Bee.dproj"/>
+    </Target>
+    <Target Name="Bee:Clean" DependsOnTargets="BeeOpt:Clean">
+        <MSBuild Projects="Bee\source\Bee.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Bee:Make" DependsOnTargets="BeeOpt:Make">
+        <MSBuild Projects="Bee\source\Bee.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BeeOpt">
+        <MSBuild Projects="BeeOpt\source\BeeOpt.dproj"/>
+    </Target>
+    <Target Name="BeeOpt:Clean">
+        <MSBuild Projects="BeeOpt\source\BeeOpt.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BeeOpt:Make">
+        <MSBuild Projects="BeeOpt\source\BeeOpt.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Bee;BeeOpt"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Bee:Clean;BeeOpt:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Bee:Make;BeeOpt:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

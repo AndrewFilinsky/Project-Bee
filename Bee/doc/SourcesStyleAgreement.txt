@@ -1,0 +1,11 @@
+
+  All reserved words must be in lowercase.
+  All standard ordinal type names must be in lowercase.
+
+  In most cases must be one operator in one line.
+  Keyword "begin" must be at the same level as keyword "end".
+
+  Routine header must be present in implementation part also, 
+  not only in interface part.
+
+  Optimal routine size must be not more than 20-30 lines.
