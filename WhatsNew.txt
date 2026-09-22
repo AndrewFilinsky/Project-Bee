@@ -449,6 +449,11 @@
 
 2026-09-22
 
+  Bee:
+
+  [/] Memory usage has been optimized. 
+  [/] Context mixing efficiency via Escape probability has been optimized.
+
   Version 1.0.36 released.
 
   [/] Some benchmark results:
@@ -457,7 +462,7 @@
   Program           Options                       enwik8      enwik9     Comp   Decomp   Mem Alg
   -------           -------                     ----------  -----------  -----  ------   --- ---
   bee 1.0.36        -m1 -d0                     29,140,763  256,368,374    426     478     4 PPM
-  bee 1.0.36        -m1 -d7                     23,686,507                               400 PPM
+  bee 1.0.36        -m1 -d7                     23,686,507  207,768,304                  400 PPM
   bee 1.0.36        -m1 -d9                     23,121,236  197,037,324   1064    1094  1600 PPM
 
   bee 1.0.36        -m3 -d0                     25,647,197  225,438,187    860     905     4 PPM
