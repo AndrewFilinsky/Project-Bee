@@ -114,7 +114,7 @@ implementation
     Randomize; // randomize, uses for unique filename generation...
 
     SelfName :=
-      Cr + 'The Bee 1.0.36 archiver utility, freeware version, 10 Sep 2026.' +
+      Cr + 'The Bee 1.0.36 archiver utility, freeware version, 22 Sep 2026.' +
       Cr + '(C) 1999-2007, 2009, 2022, 2025, 2026 Andrew Filinsky.';
 
     ArcName  :=  '';
@@ -177,7 +177,7 @@ implementation
     AppInterface.cMsg := ('  a       add self-extrActor module'); Synchronize (AppInterface.OnDisplay);
     AppInterface.cMsg := ('  o<M>    set overwrite file Mode (Q-Query (default), A-All, S-Skip all)'); Synchronize (AppInterface.OnDisplay);
     AppInterface.cMsg := ('  m<0..3> set compression Method (0-store...1-default...3-maximal)'); Synchronize (AppInterface.OnDisplay);
-    AppInterface.cMsg := ('  d<0..9> set Dictionary size (d1 uses < 5M, d2 (default) < 10M, d3 < 20M...)' + Cr); Synchronize (AppInterface.OnDisplay);
+    AppInterface.cMsg := ('  d<0..9> set Dictionary size (d9 uses 1600mb, d8 uses 800Mb, d7 uses 400Mb, ...' + Cr); Synchronize (AppInterface.OnDisplay);
 
     AppInterface.cMsg := ('  x       eXclude filenames'); Synchronize (AppInterface.OnDisplay);
     AppInterface.cMsg := ('  t       Test archive after process'); Synchronize (AppInterface.OnDisplay);
