@@ -446,3 +446,20 @@
   [/] Запускаю сбор статистики при вариантах Increment = 8, 16, 32, 64, 128.
 
   Version 1.0.35G testc test2 70000.
+
+2026-09-22
+
+  Version 1.0.36 released.
+
+  [/] Some benchmark results:
+
+                  Compression                      Compressed size       Time (ns/byte)
+  Program           Options                       enwik8      enwik9     Comp   Decomp   Mem Alg
+  -------           -------                     ----------  -----------  -----  ------   --- ---
+  bee 1.0.36        -m1 -d0                     29,140,763  256,368,374    426     478     4 PPM
+  bee 1.0.36        -m1 -d7                     23,686,507                               400 PPM
+  bee 1.0.36        -m1 -d9                     23,121,236  197,037,324   1064    1094  1600 PPM
+
+  bee 1.0.36        -m3 -d0                     25,647,197  225,438,187    860     905     4 PPM
+  bee 1.0.36        -m3 -d7                     20,492,614  175,973,022                  400 PPM
+  bee 1.0.36        -m3 -d9                     19,842,492  167,252,964   3257    3305  1600 PPM
