@@ -1,5 +1,5 @@
 # Project Bee
-Project Bee, archiver, data compression, PPM, context modelling.
+Project Bee, Data Compression, PPM, Prediction by Partial Matching, context modelling, file archiver.
 
 ## License & Authorship
 
